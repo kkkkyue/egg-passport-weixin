@@ -1,6 +1,6 @@
 {
   "name": "egg-passport-weixin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "egg-passport-weixin",
   "eggPlugin": {
     "name": "passportWeixin",
