@@ -19,7 +19,7 @@ module.exports = app => {
   }
   
   config.requireState = false;
-  app.passport.use(client, new Strategy(config, (req, accessToken, refreshToken, profile, done) => {
+  app.passport.use(client, new weixinStrategy(config, (req, accessToken, refreshToken, profile, done) => {
 
     const user = {
       provider: 'weixin',
