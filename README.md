@@ -47,7 +47,7 @@ exports.passportWeixin = {
 exports.passportWeiXin = {
   clientID: '',
   secret: '',
-  callbackURL: '/passport/weixin/callback',
+  callbackURL: '/auth/weixin/callback',
   scope:'snsapi_userinfo',
 };
 ```
@@ -56,7 +56,14 @@ see [config/config.default.js](config/config.default.js) for more detail.
 
 ## Example
 
-<!-- example here -->
+
+```js
+// {app_root}/app/router.js
+app.get("/auth/weixin", app.passport.authenticate('loginByWeixinClient'));
+
+app.get("/auth/weixin/callback",app.passport.authenticate('loginByWeixinClient',{ successRedirect: '/test/hello',failureRedirect: '/login' })
+    );
+```
 
 ## Questions & Suggestions
 

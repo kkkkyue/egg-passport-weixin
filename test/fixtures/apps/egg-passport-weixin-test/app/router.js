@@ -2,6 +2,6 @@
 
 module.exports = app => {
   app.get('/', function* () {
-    this.body = 'hi, ' + app.plugins.eggPassportWeixin.name;
+    this.body = 'hi, ' + app.plugins.passportWeixin.name;
   });
 };

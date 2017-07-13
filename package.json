@@ -39,7 +39,8 @@
     "lint": "eslint .",
     "ci": "npm run pkgfiles --check && npm run lint && npm run cov",
     "pkgfiles": "egg-bin pkgfiles",
-    "autod": "autod"
+    "autod": "autod",
+    "debug": "egg-bin debug"
   },
   "files": [
     "app.js",

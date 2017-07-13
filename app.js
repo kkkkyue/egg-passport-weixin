@@ -1,24 +1,18 @@
 'use strict';
-const debug = require('debug')('egg-passport-weixin');
-const assert = require('assert');
 const weixinStrategy = require('passport-weixin');
 
 module.exports = app => {
-  const config = app.config.passportWeixin;
+  var config = app.config.passportWeiXin;
   config.passReqToCallback = true;
-  assert(config.clientID, '[egg-passport-weixin] config.passportWeixin.clientID required');
-  assert(config.secret, '[egg-passport-weixin] config.passportWeixin.secret required');
-  config.clientID = config.clientID;
   config.clientSecret = config.secret;
-  config.scope = config.scope;
-  var client="snsapi_login";
-  if (config.scope=="snsapi_userinfo")
-  {
+  var client = "snsapi_login";
+  if (config.scope == "snsapi_userinfo") {
     config.authorizationURL = 'https://open.weixin.qq.com/connect/oauth2/authorize';
-    client="loginByWeixinClient";
+    client = "loginByWeixinClient";
   }
-  
+
   config.requireState = false;
+  app.logger.info(config);
   app.passport.use(client, new weixinStrategy(config, (req, accessToken, refreshToken, profile, done) => {
 
     const user = {
@@ -31,8 +25,8 @@ module.exports = app => {
       refreshToken: refreshToken,
     };
 
-    debug('%s %s get user: %j', req.method, req.url, user);
-
+    //debug('%s %s get user: %j', req.method, req.url, user);
+    //app.logger.info(user);
     app.passport.doVerify(req, user, done);
   }));
 };
