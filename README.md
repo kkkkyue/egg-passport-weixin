@@ -27,7 +27,7 @@ Description here.
 ## Install
 
 ```bash
-$ npm i egg-egg-passport-weixin --save
+$ npm i egg-passport-weixin --save
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ $ npm i egg-egg-passport-weixin --save
 // {app_root}/config/plugin.js
 exports.eggPassportWeixin = {
   enable: true,
-  package: 'egg-egg-passport-weixin',
+  package: 'egg-passport-weixin',
 };
 ```
 
