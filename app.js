@@ -11,13 +11,15 @@ module.exports = app => {
   config.clientID = config.clientID;
   config.clientSecret = config.secret;
   config.scope = config.scope;
+  var client="snsapi_login";
   if (config.scope=="snsapi_userinfo")
   {
     config.authorizationURL = 'https://open.weixin.qq.com/connect/oauth2/authorize';
+    client="loginByWeixinClient";
   }
   
   config.requireState = false;
-  app.passport.use('weixin', new Strategy(config, (req, accessToken, refreshToken, profile, done) => {
+  app.passport.use(client, new Strategy(config, (req, accessToken, refreshToken, profile, done) => {
 
     const user = {
       provider: 'weixin',
